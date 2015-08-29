@@ -45,3 +45,41 @@ button{
   padding: 3px 8px;
   font-size: 1.2em;
 }
+
+
+#addForm .ng-pristine {
+    background: none!important;
+}
+#addForm .ng-dirty {
+    background:#FAC8C8;
+}
+#addForm .ng-valid {
+    background: #E8FAC8
+}
+#addForm .ng-invalid {
+    background: #FAC8C8
+}
+button:disabled {
+    background: #ccc;
+    color:#aaa;
+}
+
+.exp-details {
+  clear: both;
+}
+.exp-details >div {
+  float: left;
+  padding: 0.5em 0.2em;
+  border-bottom: thin solid #eaeaea;
+}
+.exp-details .col-sm-1 {
+  width:5%;
+}
+.exp-details .col-sm-2 {
+  width:20%;
+}
+.exp-details .col-sm-3 {
+  width:25%;
+}.exp-details .col-sm-4 {
+  width:40%;
+}
