@@ -1,0 +1,47 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.page-slide input , .page-slide select{
+  display: block;
+  padding:0.75em;
+  margin: .5em 0 1em 0;
+width: 90%;
+font-size:1em;
+border: thin solid #ccc;
+}
+
+button{
+  background: #3E7504 ;
+  color:#CCFF96;
+  border: thin solid #3E7504;
+  padding: 3px 8px;
+  font-size: 1.2em;
+}
