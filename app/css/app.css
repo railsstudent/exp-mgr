@@ -83,3 +83,15 @@ button:disabled {
 }.exp-details .col-sm-4 {
   width:40%;
 }
+
+@media all and (min-width: 680px){
+  #summary,#details{
+    float:left;
+    width:49%;
+    padding: 0.25em;
+  }
+}
+
+.bg-image{ 
+  -webkit-user-drag: none;
+}
