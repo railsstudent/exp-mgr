@@ -33,13 +33,14 @@ angular.module('myApp.controllers', [])
   .controller('NavigationCtrl', ['$scope', '$location', function($scope, $location) {
 
     var navigator = function _navigator(incrementer) {
-      var pages = ['/', '/add-expense', '/view-summary'];
+      var pages = ['/add-expense', '/view-summary'];
 
       var nextUrl = "";
       var currentPage = $location.path();
       var lastPageIndex = pages.length - 1;
       var pageIndex = pages.indexOf(currentPage);
       var direction = pageIndex + incrementer;
+      $scope.slidingDirection = (incrementer === 1) ? 'slide-right' : 'slide-left';
       if (direction === -1) { 
         direction = lastPageIndex;
       }

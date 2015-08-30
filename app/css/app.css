@@ -1,32 +1,43 @@
 /* app css stylesheet */
 
+body {
+  font-family:'Lato', sans-serif;
+  font-weight: 100;  
+  color:#f9f9f9;
+  background: #333;
+  height: 100%;
+
+}
+.bg-image {
+  position: fixed;
+  top: 0;
+  left:0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  background: #333;
+  opacity: 0.3;
+}
+h1 {
+  font-size: 2.5em;
+  font-weight: 100;
+  margin-left: 5%;
+}
+
 .menu {
   list-style: none;
-  border-bottom: 0.1em solid black;
   margin-bottom: 2em;
   padding: 0 0 0.5em;
+  position: absolute;
+  bottom: 1em;
 }
-
-.menu:before {
-  content: "[";
+.menu li {
+  margin: 2em 1em;
 }
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+.menu a {
+  color: #f9f9f9;
+  font-size: 2em;
+  text-decoration: none
 }
 
 .page-slide input , .page-slide select{
@@ -94,4 +105,51 @@ button:disabled {
 
 .bg-image{ 
   -webkit-user-drag: none;
+}
+
+.page-slide {
+  padding: 2% ;
+  position: absolute;
+  width: 85% ;
+  min-height: 90% ;
+  opacity: 0.8;
+  background: #222;
+  border: thin solid #111;
+  margin: 0% 5% 5% ;
+}
+
+.page-slide.ng-enter,.page-slide.ng-leave{
+   transition: all 0.9s ease-out;
+   -moz-transition: all 0.9s ease-out;
+   -webkit-transition: all 0.9s ease-out;
+} 
+
+.slide-right.ng-leave{
+  left:0%;
+}
+
+.slide-right.ng-leave-active {
+  left:100%;
+}
+
+.slide-right.ng-enter {  
+  left:-100%;
+}
+.slide-right.ng-enter-active {
+  left:0%;
+}
+
+.slide-left.ng-leave{
+  left:0%;
+}
+
+.slide-left.ng-leave-active {
+  left:-100%;
+}
+
+.slide-left.ng-enter {  
+  left:100%;
+}
+.slide-left.ng-enter-active {
+  left:0%;
 }
