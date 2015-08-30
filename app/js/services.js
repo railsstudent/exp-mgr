@@ -27,13 +27,12 @@ angular.module('myApp.services', [])
   							return key.substring(0, prefix.length) == prefix; 	
   						});
 
-  				console.log(keys);
   				_.forEach(keys, function(key) {
   					var data = window.localStorage[key];
   					data = JSON.parse(data);
+            data.key = key;
   					expenses.push(data);
   				});
-  				console.log('expenses: ' + expenses);
   				return expenses;
   			},
 

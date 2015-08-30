@@ -83,9 +83,15 @@ button:disabled {
   padding: 0.5em 0.2em;
   border-bottom: thin solid #eaeaea;
 }
+
 .exp-details .col-sm-1 {
   width:5%;
 }
+
+.exp-details .col-sm-1.selection {
+  padding: 0.06em; 
+}
+
 .exp-details .col-sm-2 {
   width:20%;
 }

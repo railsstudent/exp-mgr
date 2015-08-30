@@ -58,7 +58,7 @@ angular.module('myApp.directives', []).
 						  .data(data)
 						  .enter()
 						  .append('text')
-						  .attr('fill', '#000')
+						  .attr('fill', '#fff')
 						  .attr('y', function(d, i) {
 						    return i * (barHeight + barGap) + 20;
 						  })

@@ -17,18 +17,44 @@ angular.module('myApp.controllers', [])
   		}
   }])
   .controller('ViewSummaryCtrl', ['$scope', 'categoryList', 'expService', function($scope, categoryList, expService) {
-  		$scope.expenses = expService.getExpense();
+  		
+      var initExpenses = function _initExpenses() {
 
-  		$scope.summaryData = [];
-  		var categories = categoryList;
+        $scope.expenses = expService.getExpense();
+        $scope.selections = [];
+        for (var i = 0; i < $scope.expenses.length; i++) {
+          $scope.selections.push(false);
+        }
 
-  		_.forEach(categories, function(category) {
-  			var total = expService.getCategoryTotal(category);
-  			$scope.summaryData.push({
-  				category: category,
-  				amount: total
-  			});
-  		});
+        $scope.summaryData = [];
+        var categories = categoryList;
+
+        _.forEach(categories, function(category) {
+          var total = expService.getCategoryTotal(category);
+          $scope.summaryData.push({
+            category: category,
+            amount: total
+          });
+        });
+      };
+      initExpenses();
+
+      $scope.isChecked = function _isChecked(index) {
+        return $scope.selections[index];
+      };
+
+      $scope.sync = function _sync(index, bool) {
+        $scope.selections[index] = bool;
+      };
+
+      $scope.deleteExpense = function _delete() {
+        for (var i = 0; i < $scope.selections.length; i++) {
+          if ($scope.selections[i] === true) {
+            window.localStorage.removeItem($scope.expenses[i].key);
+          }
+        }
+        initExpenses();
+      };
   }])
   .controller('NavigationCtrl', ['$scope', '$location', function($scope, $location) {
 
