@@ -3,20 +3,22 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', ['$scope', function($scope) {
-
-  }])
-  .controller('MyCtrl2', ['$scope', function($scope) {
-
-  }])
   .controller('AddExpenseCtrl', ['$scope', 'categoryList', 'expService', function($scope, categoryList, expService) {
   		$scope.categories = categoryList;
 
+      $scope.message = '';
   		$scope.submit = function _submit() {
-  			expService.saveExpense($scope.expense);
+        $scope.message = '';
+  			var promise = expService.saveExpense($scope.expense);
+        promise.then(function(message) {
+          $scope.message = message;
+        }, 
+        function(reason) {
+          $scope.message = reason;
+        });
   		}
   }])
-  .controller('ViewSummaryCtrl', ['$scope', 'categoryList', 'expService', function($scope, categoryList, expService) {
+  .controller('ViewSummaryCtrl', ['$scope', 'categoryList', 'expService', '$timeout', function($scope, categoryList, expService, $timeout) {
   		
       var initExpenses = function _initExpenses() {
 
@@ -25,7 +27,9 @@ angular.module('myApp.controllers', [])
         for (var i = 0; i < $scope.expenses.length; i++) {
           $scope.selections.push(false);
         }
+      };
 
+      var initSummaryData = function _initSummaryData() {
         $scope.summaryData = [];
         var categories = categoryList;
 
@@ -37,7 +41,9 @@ angular.module('myApp.controllers', [])
           });
         });
       };
+
       initExpenses();
+      initSummaryData();
 
       $scope.isChecked = function _isChecked(index) {
         return $scope.selections[index];
@@ -54,6 +60,7 @@ angular.module('myApp.controllers', [])
           }
         }
         initExpenses();
+        $timeout(initSummaryData());
       };
   }])
   .controller('NavigationCtrl', ['$scope', '$location', function($scope, $location) {

@@ -1,5 +1,6 @@
 <h2>Add Expense</h2>
 <form id="addForm" name="addForm" novalidate >
+	<label>{{message}}</label><br/>
     <label>Category</label>
     <select ng-model="expense.category" ng-options="category for category in categories">
     </select>

@@ -8,16 +8,29 @@
 angular.module('myApp.services', [])
   .value('version', '0.1')
   .value('categoryList', ["Food", "Fuel", "Grocery", "Entertainment"])
-  .factory('expService', [function() {
+  .factory('expService', ['$q', function($q) {
   		var prefix = 'exp-mgr';
   		return {
   			saveExpense : function _saveExpense(data) {
 
-  				var timestamp = Math.round(new Date().getTime());
-  				var key = prefix + timestamp;
+          var deferred = $q.defer();
 
-  				data = JSON.stringify(data);
-  				localStorage[key] = data;
+          setTimeout(function() {
+
+            try {
+    				  var timestamp = Math.round(new Date().getTime());
+    				  var key = prefix + timestamp;
+
+    				  data = JSON.stringify(data);
+    				  localStorage[key] = data;
+              deferred.resolve("Expense is added successfully.");
+            } catch (e) {
+              console.log("Got an error!", e);
+              deferred.reject("Expense cannot be added.");
+            }
+          });
+
+          return deferred.promise;
   			},
 
   			getExpense : function _getExpense() {
